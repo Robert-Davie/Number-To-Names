@@ -54,7 +54,9 @@ def convert_three_digit(integer_in: int) -> str:
     hundreds = integer_in // 100
     leftovers = integer_in - hundreds * 100
     hundred_string = convert_single_digit(hundreds)
-    leftovers_string = " and " + (convert_two_digit(leftovers)) if leftovers != 0 else ""
+    leftovers_string = (
+        " and " + (convert_two_digit(leftovers)) if leftovers != 0 else ""
+    )
     final_string = f"{hundred_string} hundred{leftovers_string}"
     return final_string
 
@@ -67,5 +69,7 @@ def convert_number(integer_in: int) -> str:
         leftovers = integer_in - thousands * 1_000
         thousands_string = f"{convert_three_digit(thousands)} thousand"
         connection = " and " if leftovers < 100 else ", "
-        leftovers_string = f"{connection}{convert_three_digit(leftovers)}" if leftovers != 0 else ""
+        leftovers_string = (
+            f"{connection}{convert_three_digit(leftovers)}" if leftovers != 0 else ""
+        )
         return thousands_string + leftovers_string
